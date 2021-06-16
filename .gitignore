@@ -1,0 +1,27 @@
+# General
+.DS_Store
+
+# ignore all files starting with . or ~
+.*
+~*
+
+# ignore VS Code files
+*.code-workspace
+
+# ignore log files and databases
+*.log
+*.sql
+*.sqlite
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# track these files, if they exist
+!.gitignore

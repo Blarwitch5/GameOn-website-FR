@@ -1,0 +1,255 @@
+/**
+ *
+ * MIXINS
+ *
+ * ========================================================================= */
+// @mixin padding-h-5 {
+//   padding-left: 5%;
+//   padding-right: 5%;
+// }
+// @mixin padding-h-10 {
+//   padding-left: 10%;
+//   padding-right: 10%;
+// }
+// @mixin padding-v-10 {
+//   padding-top: 10%;
+//   padding-bottom: 10%;
+// }
+// @mixin padding-v-5 {
+//   padding-top: 5%;
+//   padding-bottom: 5%;
+// }
+// @mixin padding-vh-10 {
+//   padding: 10%;
+// }
+// @mixin margin-v-5 {
+//   margin-top: 5%;
+//   margin-bottom: 5%;
+// }
+
+// @mixin txt-shrikhand {
+//   font-family: "Shrikhand";
+//   font-style: normal;
+//   font-weight: 400;
+// }
+
+// @mixin title($weight, $line-height, $font-size) {
+//   font-weight: $weight;
+//   line-height: $line-height;
+//   font-size: $font-size;
+// }
+
+// @mixin box-shadow {
+//   box-shadow: 0px 5px 11px -6px rgba(0, 0, 0, 0.5);
+// }
+// @mixin box-shadow-reverse {
+//   box-shadow: 0px -5px 11px -6px rgba(0, 0, 0, 0.5);
+// }
+
+// @mixin border-radius-all {
+//   border-radius: 1rem;
+// }
+// @mixin customTransition($property, $duration, $timing, $delay) {
+//   transition: $property $duration $timing $delay;
+// }
+// @mixin delayedEntrance {
+//   opacity: 0;
+//   animation: fadeIn 800ms ease-in-out forwards;
+// }
+
+// /*------ Breakpoints -----*/
+// @mixin breakpoint($breakpoint) {
+//   @if $breakpoint == xl_desktop {
+//     // > 1400 px
+//     @media (min-width: 87.5rem) {
+//       @content;
+//     }
+//   } @else if $breakpoint == l_desktop {
+//     // > 1200 px
+//     @media (min-width: 75rem) {
+//       @content;
+//     }
+//   } @else if $breakpoint == laptop {
+//     // > 992 px
+//     @media (min-width: 62rem) {
+//       @content;
+//     }
+//   } @else if $breakpoint == tablet {
+//     // > 768 px
+//     @media (min-width: 48rem) {
+//       @content;
+//     }
+//   } @else if $breakpoint == phablet {
+//     // > 576 px
+//     @media (min-width: 36rem) {
+//       @content;
+//     }
+//   } @else if $breakpoint == mobileonly {
+//     // < 576 px
+//     @media (max-width: 36rem) {
+//       @content;
+//     }
+//   }
+// }
+// @mixin iconHeart {
+//   stroke-width: 10%;
+//   stroke: $black;
+//   fill: transparent;
+//   z-index: 9999;
+
+//   &:hover, &:active {
+//     stroke-width: 0%;
+//     animation: iconHeart 500ms forwards;
+//   }
+// }
+// @mixin heroImg($imgUrl, $verticalAlign) {
+//   background: url($imgUrl) no-repeat $verticalAlign center;
+// }
+// /*----- @include breakpoint(value){} ------*/
+
+// //---------------------------------------------------------------//
+// //                                                               //
+// //                      FLEXBOX MIXINS                           //
+// //                                                               //
+// //---------------------------------------------------------------//
+
+// // Flexbox display
+// @mixin flexbox {
+//   display: flex;
+// }
+
+// // Inline flex display
+// @mixin inline-flex {
+//   display: inline-flex;
+// }
+
+// // The 'flex' shorthand
+
+// @mixin flex($fgrow, $fshrink, $fbasis) {
+//   // Set a variable to be used by box-flex properties
+//   $fgrow-boxflex: $fgrow;
+
+//   // Box-Flex only supports a flex-grow value so lets grab the
+//   // first item in the list and just return that.
+//   @if type-of($fgrow) == "list" {
+//     $fgrow-boxflex: nth($fgrow, 1);
+//   }
+
+//   flex: $fgrow $fshrink $fbasis;
+// }
+
+// // Flex Flow Direction
+// @mixin flex-direction($direction) {
+//   flex-direction: $direction;
+// }
+
+// // Flex Line Wrapping
+// @mixin flex-wrap($value) {
+//   flex-wrap: $value;
+// }
+
+// // Flex Direction and Wrap
+// @mixin flex-flow(
+//   $values: (
+//     row nowrap,
+//   )
+// ) {
+//   flex-flow: $values;
+// }
+
+// // Display Order
+// @mixin order($int) {
+//   order: $int;
+// }
+
+// // Flex grow factor
+// @mixin flex-grow($int) {
+//   flex-grow: $int;
+// }
+
+// // Flex shrink
+// @mixin flex-shrink($int) {
+//   flex-shrink: $int;
+// }
+
+// // Flex basis
+// @mixin flex-basis($value) {
+//   flex-basis: $value;
+// }
+
+// // Axis Alignment
+// @mixin justify-content($value) {
+//   justify-content: $value;
+// }
+
+// // Packing Flex Lines
+// @mixin align-content($value) {
+//   align-content: $value;
+// }
+
+// // Cross-axis Alignment
+// @mixin align-items($value) {
+//   align-items: $value;
+// }
+
+// // Cross-axis Alignment
+// @mixin align-self($value) {
+//   align-self: $value;
+// }
+
+// @mixin gradient($start-color, $end-color, $orientation) {
+//   background-image: linear-gradient($orientation, $start-color 0%, $end-color 66%);
+// }
+
+// @mixin center($position) {
+//   position: absolute;
+
+//   @if $position == "vertical" {
+//     top: 50%;
+//     transform: translateY(-50%);
+//   } @else if $position == "horizontal" {
+//     left: 50%;
+//     transform: translate(-50%);
+//   } @else if $position == "both" {
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//   }
+// }
+// /*----- .result {@include center(both);} -----*/
+// @mixin full-absolute-overlay {
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+// }
+
+// @mixin gradientText($gradient) {
+//   @supports (mix-blend-mode: lighten) {
+//     display: inline-block;
+//     position: relative;
+
+//     &::before {
+//       content: "";
+//       display: block;
+//       position: absolute;
+//       top: 0;
+//       right: 100%;
+//       bottom: 0;
+//       left: 0;
+
+//       background: unquote($gradient);
+//       pointer-events: none;
+//       animation: preloader 3s;
+//     }
+//   }
+
+//   color: $black;
+//   background: $white;
+//   mix-blend-mode: multiply;
+
+//   &::before {
+//     mix-blend-mode: screen;
+//   }
+// }

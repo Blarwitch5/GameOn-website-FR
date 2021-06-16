@@ -1,0 +1,13 @@
+{
+  "name": "gameon",
+  "version": "1.0.0",
+  "description": "Inscription au marathon national GameOn",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass ./sass/main.scss:./public/css/style.css -w --style expanded",
+    "prefix": "postcss ./public/css/style.css --use autoprefixer -d ./public/css/prefixed/"
+  },
+  "author": "Romain Blary",
+  "license": "ISC",
+  "browserslist": "last 4 versions"
+}
