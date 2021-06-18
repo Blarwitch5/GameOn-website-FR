@@ -13,18 +13,9 @@
   }
 }
 
-// @mixin btnModal {
-//   font-size: 145%;
-//   display: flex;
-//   margin: auto;
-//   padding: 2em;
-//   padding: 0.75rem 2.5rem;
-//   border-radius: 1rem;
-// }
-
 @mixin btnSubmit {
   margin-top: 0.5em;
   padding: 1em;
   border-radius: 15px;
-  font-size: 16px;
+  font-size: 0.875rem;
 }

@@ -3,3 +3,153 @@
  * HEADER STYLE
  *
  * ========================================================================= */
+
+.header {
+  margin: 3.5%;
+  padding: 0 2vw;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  @media screen and (min-width: 800px) and (max-width: 1150px) {
+    justify-content: center;
+  }
+  @media screen and (max-width: 768px) {
+    flex-flow: row nowrap;
+  }
+
+  @media screen and (max-width: 540px) {
+    min-height: 65px;
+  }
+
+  &-menu {
+    position: relative;
+  }
+
+  &-hamburger {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
+    @media screen and (max-width: 540px) {
+      top: 20px;
+    }
+
+    a {
+      &:hover,
+      &.active {
+        background-color: $primary;
+        color: $white;
+        border-radius: 15px;
+      }
+      &.icon {
+        @media screen and (max-width: 768px) {
+          display: block;
+          color: $primary;
+        }
+        @media screen and (max-width: 540px) {
+          display: block;
+          margin-top: -15px;
+        }
+      }
+    }
+  }
+
+  a {
+    float: left;
+    display: block;
+    color: $black;
+    text-align: center;
+    padding: 12px 12px;
+    margin: 5px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: $font-default;
+
+    @media screen and (min-width: 800px) and (max-width: 1150px) {
+        font-size: 16px;
+    }
+
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+    @media screen and (max-width: 540px) {
+      display: none;
+    }
+
+    &:hover,
+    &.active {
+      background-color: #ff0000;
+      color: $white;
+      border-radius: 15px;
+
+      span {
+        position: relative;
+
+        &::after {
+          content: "";
+          background-color: $white;
+          height: 1px;
+          width: 100%;
+          position: absolute;
+          bottom: 0px;
+          left: 0;
+        }
+      }
+    }
+  }
+  .icon {
+    display: none;
+  }
+
+  &.responsive {
+    & .header-hamburger {
+      a {
+        &:hover,
+        &.active {
+          background-color: $primary;
+          color: $white;
+        }
+        &.icon {
+          color: $white;
+        }
+      }
+    }
+
+    .header-navbar {
+      a {
+        @media screen and (max-width: 768px) {
+          float: none;
+          display: block;
+          text-align: left;
+        }
+      }
+    }
+    .header-logo {
+      @media screen and (max-width: 540px) {
+        align-items: flex-start;
+        transform: rotate(90deg);
+        transform-origin: 20px 30px;
+        height: 100%;
+      }
+    }
+  }
+  &-logo {
+    padding-right: 30px;
+    @media screen and (min-width: 800px) and (max-width: 1150px) {
+      padding-bottom: 30px;
+    }
+    @media screen and (max-width: 540px) {
+      padding-top: 20px;
+    }
+    img {
+      @media screen and (max-width: 540px) {
+        max-width: 150px;
+      }
+    }
+  }
+}
