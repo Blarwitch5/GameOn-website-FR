@@ -61,17 +61,17 @@
             <form id="contest-subscription" class="form" name="reserve" action="index.html" method="get" onsubmit="return formValidation();">
               <div class="form-field">
                 <label for="first-name">Prénom</label>
-                <input class="text-control" type="text" id="first-name" name="first-name" minlength="2" />
+                <input class="text-control" type="text" id="first-name" name="first-name" minlength="2" required />
                 <div class="data-error" id="errorFirstname">Le champ prénom doit contenir minimum 2 caractères.</div>
               </div>
               <div class="form-field">
                 <label for="last-name">Nom</label>
-                <input class="text-control" type="text" id="last-name" name="last-name" minlength="2" />
+                <input class="text-control" type="text" id="last-name" name="last-name" minlength="2" required />
                 <div class="data-error" id="errorLastname">Le champ nom doit contenir minimum 2 caractères.</div>
               </div>
               <div class="form-field" >
                 <label for="email">E-mail</label>
-                <input class="text-control" type="email" id="email" name="email" />
+                <input class="text-control" type="email" id="email" name="email" required />
                 <div class="data-error" id="errorEmail">Le format de l'email n'est pas valide.</div>
               </div>
               <div class="form-field">
