@@ -29,55 +29,40 @@ const modalBtns = document.querySelectorAll(".js-modal-btn");
 const formDataFields = document.querySelectorAll(".form-field");
 const modalCloseBtns = document.querySelectorAll(".modal-close-btn");
 
-function getValue(elementId) {
-  return document.querySelector(elementId).value;
-}
-function getElement(elementId){
-  return document.getElementById(elementId);
-
-}
-
 //object formInputs containing all form input values
 let formInputs = {
   firstName: {
-    fieldValue: getValue('#first-name'),
-    element: getElement("first-name"),
+    element: document.getElementById("first-name")
   },
   lastName: {
-    fieldValue: getValue('#last-name'),
-    element: getElement("last-name"),
+    element: document.getElementById("last-name")
   },
   email: {
-    fieldValue: getValue('#email'),
-    element: getElement("email"),
+    element: document.getElementById("email")
   },
   birthdate: {
-    fieldValue: getValue('#birthdate'),
-    element: getElement("birthdate"),
+    element: document.getElementById("birthdate")
   },
   tournamentParticipations: {
-    fieldValue: getValue('#tournament-participations'),
-    element: getElement("tournament-participations"),
+    element: document.getElementById("tournament-participations")
   },
   location: {
-    fieldValue: document.getElementsByName("location"),
     //method that return the select inputs
     element() {
-      let numberOfLocations = formInputs.location.fieldValue.length;
+      let numberOfLocations = document.getElementsByName("location").length;
       let elements = [];
       for (let index = 1; index <= numberOfLocations; index++) {
         elements.push(document.getElementById(`location${index}`));
+        eval("location" + index);
       }
       return elements;
-    },
+    }
   },
   termsConditions: {
-    fieldValue: getValue('#terms-conditions'),
-    element: getElement("terms-conditions"),
+    element: document.getElementById("terms-conditions")
   },
   notificationsAllowed: {
-    fieldValue: document.querySelector("#notifications").checked,
-    element: document.getElementById("notifications"),
+    element: document.getElementById("notifications")
   },
 };
 
@@ -110,8 +95,10 @@ inputBirthdate.addEventListener("change", birthdateValidation);
 const inputTournamentParticipations = formInputs.tournamentParticipations.element;
 inputTournamentParticipations.addEventListener("change", tournamentValidation);
 
-// const inputLocation = formInputs.location.element;
-// inputLocation.addEventListener("input", locationValidation);
+const inputLocations = formInputs.location.element();
+for (let index = 0; index < inputLocations.length; index++) {
+  inputLocations[index].addEventListener("input", locationValidation);
+}
 
 const inputTermsConditions = formInputs.termsConditions.element;
 inputTermsConditions.addEventListener("change", termsConditionsValidation);
@@ -171,11 +158,9 @@ function emailCheck(email) {
   let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
   return regex.test(email);
 }
-console.log(document.querySelector('#birthdate').value);
 
 //compare 2 dates
 function dateCheck(date) {
-
   const today = new Date();
   const oneDate = new Date(date);
 
@@ -200,7 +185,7 @@ function lastnameValidation() {
 function emailValidation() {
   let testResult = false;
   const input = formInputs.email.element;
-  let inputValue = formInputs.email.fieldValue;
+  let inputValue = input.value;
 
   // if (regex.exec(inputValue) == null) {
   if (!emailCheck(inputValue)) {
@@ -220,11 +205,9 @@ function emailValidation() {
 function birthdateValidation() {
   let testResult = false;
   const input = formInputs.birthdate.element;
-  let inputValue = formInputs.birthdate.fieldValue;
+  let inputValue = input.value;
 
-  console.log(inputValue);
-
-  if (dateCheck(inputValue)) {
+  if (!dateCheck(inputValue)) {
     input.style.border = valueStyles.invalid.border;
     input.style.boxShadow = valueStyles.invalid.boxShadow;
     showErrorMessage("#errorBirthdate");
@@ -241,7 +224,7 @@ function birthdateValidation() {
 function tournamentValidation() {
   let testResult = false;
   const input = formInputs.tournamentParticipations.element;
-  let inputValue = formInputs.tournamentParticipations.fieldValue;
+  let inputValue = input.value;
 
   if (isNaN(inputValue)) {
     input.style.border = valueStyles.invalid.border;
@@ -259,19 +242,22 @@ function tournamentValidation() {
 // check if the user selected at least one city
 function locationValidation() {
   let testResult = false;
+  let input = document.querySelector(".locations");
 
   if (
-    !formInputs.location.element[0].checked ||
-    !formInputs.location.element[1].checked ||
-    !formInputs.location.element[2].checked ||
-    !formInputs.location.element[3].checked ||
-    !formInputs.location.element[4].checked ||
-    !formInputs.location.element[5].checked
+    !formInputs.location.element()[0].checked &&
+    !formInputs.location.element()[1].checked &&
+    !formInputs.location.element()[2].checked &&
+    !formInputs.location.element()[3].checked &&
+    !formInputs.location.element()[4].checked &&
+    !formInputs.location.element()[5].checked
   ) {
-    buildErrorMessage("location", errorMessage);
-    return false;
+    input.style.border = valueStyles.invalid.border;
+    input.style.boxShadow = valueStyles.invalid.boxShadow;
+    showErrorMessage("#errorLocation");
   } else {
     testResult = true;
+    removeErrorMessage("#errorLocation");
   }
   return testResult;
 }
@@ -293,8 +279,7 @@ function termsConditionsValidation() {
 /*------------------------------------------------------------------------*/
 /*----------                   form validation                ------------*/
 /*------------------------------------------------------------------------*/
-function formValidation(event) {
-}
+function formValidation(event) {}
 
 /*------------------------------------------------------------------------*/
 /*----------                   function menu                  ------------*/
