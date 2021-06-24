@@ -58,32 +58,33 @@
         <div class="modal-content">
           <span class="modal-close-btn"></span>
           <div class="modal-body">
-            <form class="form" name="reserve" action="index.html" method="get" onsubmit="return validate();">
+            <form id="contest-subscription" class="form" name="reserve" action="index.html" method="get" onsubmit="return formValidation();">
               <div class="form-field">
-                <label>Prénom</label><br />
+                <label for="first-name">Prénom</label>
                 <input class="text-control" type="text" id="first-name" name="first-name" minlength="2" />
-                <br />
+                <div class="data-error" id="errorFirstname">Le champ prénom doit contenir minimum 2 caractères.</div>
               </div>
               <div class="form-field">
-                <label>Nom</label><br />
-                <input class="text-control" type="text" id="last-name" name="last-name" />
-                <br />
+                <label for="last-name">Nom</label>
+                <input class="text-control" type="text" id="last-name" name="last-name" minlength="2" />
+                <div class="data-error" id="errorLastname">Le champ nom doit contenir minimum 2 caractères.</div>
               </div>
-              <div class="form-field">
-                <label>E-mail</label><br />
+              <div class="form-field" >
+                <label for="email">E-mail</label>
                 <input class="text-control" type="email" id="email" name="email" />
-                <br />
+                <div class="data-error" id="errorEmail">Le format de l'email n'est pas valide.</div>
               </div>
               <div class="form-field">
-                <label>Date de naissance</label><br />
+                <label for="birthdate">Date de naissance</label>
                 <input class="text-control" type="date" id="birthdate" name="birthdate" />
-                <br />
+                <div class="data-error" id="errorBirthdate">Vous devez entrer votre date de naissance.</div>
               </div>
               <div class="form-field">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br />
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" />
+                <label for="tournament-participations">À combien de tournois GameOn avez-vous déjà participé ?</label>
+                <input type="number" class="text-control" id="tournament-participations" name="tournament-participations" min="0" max="99" />
+                <div class="data-error" id="errorTournament">Vous devez entrer un nombre.</div>
               </div>
-              <p class="text-label">Quelles villes ?</p>
+              <p class="text-label">Quelle ville ?</p>
               <div class="form-field">
                 <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
                 <label class="checkbox-label--rounded" for="location1">
@@ -115,23 +116,33 @@
                   <span class="checkbox-icon"></span>
                   Portland
                 </label>
+                <div class="data-error" id="errorLocation">Vous devez choisir une option.</div>
               </div>
               <div class="form-field">
-                <input class="checkbox-input" type="checkbox" id="terms-conditions" checked />
+                <input class="checkbox-input" type="checkbox" id="terms-conditions" checked required />
                 <label class="checkbox-label--squared" for="terms-conditions" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br />
-                <input class="checkbox-input" type="checkbox" id="notification" />
-                <label class="checkbox-label--squared" for="notification">
+                <div class="data-error" id="errorTermsConditions">Pour vous inscrire, vous devez accepter les termes et conditions.</div>
+                <input class="checkbox-input" type="checkbox" id="notifications" />
+                <label class="checkbox-label--squared" for="notifications">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
-                <br />
               </div>
-              <input class="btn btn-submit " type="submit" value="C'est parti" />
+              <input id="form-validation-btn" class="btn btn-submit" type="submit" value="C'est parti" />
             </form>
+          </div>
+        </div>
+      </div>
+      <!-- Modal | Form submitted message -->
+      <div class="modal modalEnd" id="modalEnd">
+        <div class="modal-content modalEnd-content">
+          <span class="modal-close-btn modalEnd-close-btn"></span>
+          <div class="modal-body modalEnd-close-btn">
+            <div class="message-txt"> Merci ! <br> Votre réservation a été reçue. </div>
+            <div class="btn btn-submit btn-close-modalEnd " id="btn-close-modalEnd"> Fermer </div>
           </div>
         </div>
       </div>
