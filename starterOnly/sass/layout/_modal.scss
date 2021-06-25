@@ -83,20 +83,20 @@
   }
 }
 .modalEnd {
-  position: absolute;
-  top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
+  top: 0;
   height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+  text-align: left;
+  position: fixed;
   display: none;
-  // justify-content: center;
-  // align-items: center;
   z-index: 2;
 
   &-content {
     @include flexCenterCenter;
-    height: 100%;
+    height: 80%;
   }
   &-body {
     @include flexCenterCenter;
@@ -109,18 +109,28 @@
     font-size: 36px;
     line-height: 50px;
     font-weight: 400;
-  }
 
-  .modalEnd-close-btn.btn.btn-submit {
+    @media screen and (max-width: 768px) {
+      font-size: 30px;
+    }
+    }
+
+
+  .modalEnd-close-btn.btn {
     position: absolute;
     bottom: 30px;
     left: 50%;
-    transform: translateX(-50%);
-    margin: unset;
     top: unset;
     right: unset;
     width: unset;
     height: unset;
+    display: block;
+    transform: translateX(-50%);
+    margin: unset;
+    padding: 12px 82px;
+    border-radius: 7px;
+    border: 0;
+    font-size: 14px;
 
     &::after,
     &::before {
@@ -131,6 +141,14 @@
 
 .form {
   &-field {
+    &.locations{
+      border: 2px solid transparent;
+      border-radius: 8px;
+
+      .data-error{
+        padding-left: 10px;
+      }
+    }
     // &::after {
     //   content: "";
     //   background: url(../../public/img/check.svg) no-repeat center center;

@@ -371,12 +371,14 @@ footer .copyrights {
 }
 
 .modalEnd {
-  position: absolute;
-  top: 0;
   left: 0;
-  bottom: 0;
-  right: 0;
+  top: 0;
   height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+  text-align: left;
+  position: fixed;
   display: none;
   z-index: 2;
 }
@@ -384,7 +386,7 @@ footer .copyrights {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 80%;
 }
 .modalEnd-body {
   display: flex;
@@ -402,21 +404,38 @@ footer .copyrights {
   line-height: 50px;
   font-weight: 400;
 }
-.modalEnd .modalEnd-close-btn.btn.btn-submit {
+@media screen and (max-width: 768px) {
+  .modalEnd .message-txt {
+    font-size: 30px;
+  }
+}
+.modalEnd .modalEnd-close-btn.btn {
   position: absolute;
   bottom: 30px;
   left: 50%;
-  transform: translateX(-50%);
-  margin: unset;
   top: unset;
   right: unset;
   width: unset;
   height: unset;
+  display: block;
+  transform: translateX(-50%);
+  margin: unset;
+  padding: 12px 82px;
+  border-radius: 7px;
+  border: 0;
+  font-size: 14px;
 }
-.modalEnd .modalEnd-close-btn.btn.btn-submit::after, .modalEnd .modalEnd-close-btn.btn.btn-submit::before {
+.modalEnd .modalEnd-close-btn.btn::after, .modalEnd .modalEnd-close-btn.btn::before {
   content: none;
 }
 
+.form-field.locations {
+  border: 2px solid transparent;
+  border-radius: 8px;
+}
+.form-field.locations .data-error {
+  padding-left: 10px;
+}
 .form-field[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
