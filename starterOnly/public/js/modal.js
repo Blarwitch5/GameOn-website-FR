@@ -332,13 +332,14 @@ function formValidation(event) {
     termsConditionsValidation() === true
   ) {
     validForm = true;
+    event.preventDefault();
     closeModal();
     launchModalFormSubmitted();
   } else {
     validForm = false;
     event.preventDefault();
   }
-  return validForm;
+  // return validForm;
 }
 
 /*------------------------------------------------------------------------*/
