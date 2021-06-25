@@ -62,27 +62,27 @@
               <div class="form-field">
                 <label for="first-name">Prénom</label>
                 <input class="text-control" type="text" id="first-name" name="first-name" minlength="2" required />
-                <div class="data-error" id="errorFirstname">Le champ prénom doit contenir minimum 2 caractères.</div>
+                <div class="data-error" id="errorFirstname"></div>
               </div>
               <div class="form-field">
                 <label for="last-name">Nom</label>
                 <input class="text-control" type="text" id="last-name" name="last-name" minlength="2" required />
-                <div class="data-error" id="errorLastname">Le champ nom doit contenir minimum 2 caractères.</div>
+                <div class="data-error" id="errorLastname"></div>
               </div>
               <div class="form-field">
                 <label for="email">E-mail</label>
                 <input class="text-control" type="email" id="email" name="email" required />
-                <div class="data-error" id="errorEmail">Le format de l'email n'est pas valide.</div>
+                <div class="data-error" id="errorEmail"></div>
               </div>
               <div class="form-field">
                 <label for="birthdate">Date de naissance</label>
                 <input class="text-control" type="date" id="birthdate" name="birthdate" />
-                <div class="data-error" id="errorBirthdate">Vous devez entrer votre date de naissance.</div>
+                <div class="data-error" id="errorBirthdate"></div>
               </div>
               <div class="form-field">
                 <label for="tournament-participations">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <input type="number" class="text-control" id="tournament-participations" name="tournament-participations" min="0" max="99" />
-                <div class="data-error" id="errorTournament">Vous devez entrer un nombre.</div>
+                <div class="data-error" id="errorTournament"></div>
               </div>
               <p class="text-label">Quelle ville ?</p>
               <div class="form-field locations">
@@ -116,7 +116,7 @@
                   <span class="checkbox-icon"></span>
                   Portland
                 </label>
-                <div class="data-error" id="errorLocation">Vous devez choisir une option.</div>
+                <div class="data-error" id="errorLocation"></div>
               </div>
               <div class="form-field">
                 <input class="checkbox-input" type="checkbox" id="terms-conditions" checked required />
@@ -124,7 +124,7 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <div class="data-error" id="errorTermsConditions">Pour vous inscrire, vous devez accepter les termes et conditions.</div>
+                <div class="data-error" id="errorTermsConditions"></div>
                 <input class="checkbox-input" type="checkbox" id="notifications" />
                 <label class="checkbox-label--squared" for="notifications">
                   <span class="checkbox-icon"></span>
@@ -145,7 +145,7 @@
               Merci ! <br />
               Vos informations d'inscription ont été reçues.
             </div>
-            <button class="btn modal-close-btn modalEnd-close-btn" id="modalEnd-close-btn" >Fermer</button>
+            <button class="btn modal-close-btn modalEnd-close-btn" id="modalEnd-close-btn">Fermer</button>
           </div>
         </div>
       </div>

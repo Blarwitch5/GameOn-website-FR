@@ -433,6 +433,10 @@ footer .copyrights {
   border: 2px solid transparent;
   border-radius: 8px;
 }
+.form-field.locations.invalid {
+  border: 2px solid #ff4e60;
+  box-shadow: inset 0px 0px 2px 2px transparent;
+}
 .form-field.locations .data-error {
   padding-left: 10px;
   color: #ff4e60;
@@ -458,6 +462,7 @@ footer .copyrights {
 .form .data-error {
   color: #ff4e60;
   font-size: 10px;
+  min-height: 15px;
   font-weight: normal;
   line-height: 15px;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
@@ -490,6 +495,14 @@ input.text-control {
   font-size: 1.125rem;
   font-weight: 400;
   height: 48px;
+}
+input.invalid {
+  border: 2px solid #ff4e60;
+  box-shadow: inset 0px 0px 2px 2px transparent;
+}
+input.valid {
+  border: 2px solid #279e7a;
+  box-shadow: inset 0px 0px 2px 0px #279e7a;
 }
 
 /* 
