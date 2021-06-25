@@ -147,6 +147,7 @@
 
       .data-error{
         padding-left: 10px;
+        color: $errorColor;
       }
     }
     // &::after {
@@ -181,7 +182,7 @@
     }
   }
   .data-error {
-    color: $primary;
+    color: $errorColor;
     font-size: 10px;
     font-weight: normal;
     line-height: 15px;

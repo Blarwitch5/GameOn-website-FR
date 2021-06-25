@@ -435,11 +435,12 @@ footer .copyrights {
 }
 .form-field.locations .data-error {
   padding-left: 10px;
+  color: #ff4e60;
 }
 .form-field[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
-  color: #e54858;
+  color: #ff4e60;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -452,10 +453,10 @@ footer .copyrights {
   opacity: 1;
 }
 .form-field[data-error-visible=true] .text-control {
-  border: 1px solid #e54858;
+  border: 1px solid #ff4e60;
 }
 .form .data-error {
-  color: #fe142f;
+  color: #ff4e60;
   font-size: 10px;
   font-weight: normal;
   line-height: 15px;
