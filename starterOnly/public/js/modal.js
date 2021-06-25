@@ -108,26 +108,20 @@ for (let index = 0; index < formDataFields.length; index++) {
 }
 /*------------------------------------------------------------------------*/
 /*----------     function get error message from object       ------------*/
-/*----------              and inject in html tag              ------------*/
+/*----------        and show / hide with data attribute       ------------*/
 /*------------------------------------------------------------------------*/
-function injectErrorMessage(errorId, objectKey) {
-  let errorTag = document.getElementById(errorId);
+function showErrorMessage(inputId, objectKey) {
+  let inputTag = document.getElementById(inputId);
+  let fieldParent = inputTag.parentNode;
   objectKey = errorMessages[objectKey];
-  errorMessage = objectKey;
-  errorTag.innerHTML = errorMessage;
-
-  // let dataError = errorTag.setAttribute('data-error', errorMessage);
+  let errorMessage = objectKey;
+  fieldParent.setAttribute("data-error", errorMessage);
+  fieldParent.setAttribute("data-error-visible", "true");
 }
-/*------------------------------------------------------------------------*/
-/*----------     functions that show / hide error message     ------------*/
-/*------------------------------------------------------------------------*/
-function removeErrorMessage(errorId) {
-  const elementError = document.querySelector(errorId);
-  elementError.style.visibility = "hidden";
-}
-function showErrorMessage(errorId) {
-  const elementError = document.querySelector(errorId);
-  elementError.style.visibility = "visible";
+function removeErrorMessage(inputId) {
+  let inputTag = document.getElementById(inputId);
+  let fieldParent = inputTag.parentNode;
+  fieldParent.setAttribute("data-error-visible", "false");
 }
 
 /*------------------------------------------------------------------------*/
@@ -135,22 +129,21 @@ function showErrorMessage(errorId) {
 /*------------------------------------------------------------------------*/
 
 //validate text form inputs
-function textInputCheck(inputId, errorId, objectKey) {
+function textInputCheck(inputId, objectKey) {
   let testResult = false;
   const input = document.getElementById(inputId);
   let value = input.value;
-  injectErrorMessage(errorId, objectKey);
 
   // check is text input is valid
   if (value == null || value == "" || value.length <= 2) {
     input.classList.remove("valid");
     input.classList.add("invalid");
-    showErrorMessage(`#${errorId}`);
+    showErrorMessage(inputId, objectKey);
   } else {
     testResult = true;
     input.classList.remove("invalid");
     input.classList.add("valid");
-    removeErrorMessage(`#${errorId}`);
+    removeErrorMessage(inputId);
   }
   return testResult;
 }
@@ -175,11 +168,11 @@ function dateCheck(date) {
 
 // validation of firstname input field
 function firstnameValidation() {
-  return textInputCheck("first-name", "errorFirstname", "firstName");
+  return textInputCheck("first-name", "firstName");
 }
 // validation of lastname input field
 function lastnameValidation() {
-  return textInputCheck("last-name", "errorLastname", "lastName");
+  return textInputCheck("last-name", "lastName");
 }
 
 // validation of email input field
@@ -187,17 +180,16 @@ function emailValidation() {
   let testResult = false;
   const input = formInputs.email.element;
   let inputValue = input.value;
-  injectErrorMessage("errorEmail", "email");
 
   if (!emailCheck(inputValue)) {
     input.classList.remove("valid");
     input.classList.add("invalid");
-    showErrorMessage("#errorEmail");
+    showErrorMessage("email", "email");
   } else {
     testResult = true;
     input.classList.remove("invalid");
     input.classList.add("valid");
-    removeErrorMessage("#errorEmail");
+    removeErrorMessage("email");
   }
   return testResult;
 }
@@ -207,17 +199,16 @@ function birthdateValidation() {
   let testResult = false;
   const input = formInputs.birthdate.element;
   let inputValue = input.value;
-  injectErrorMessage("errorBirthdate", "birthdate");
 
   if (!dateCheck(inputValue)) {
     input.classList.remove("valid");
     input.classList.add("invalid");
-    showErrorMessage("#errorBirthdate");
+    showErrorMessage("birthdate", "birthdate");
   } else {
     testResult = true;
     input.classList.remove("invalid");
     input.classList.add("valid");
-    removeErrorMessage("#errorBirthdate");
+    removeErrorMessage("birthdate");
   }
   return testResult;
 }
@@ -227,17 +218,16 @@ function tournamentValidation() {
   let testResult = false;
   const input = formInputs.tournamentParticipations.element;
   let inputValue = input.value;
-  injectErrorMessage("errorTournament", "tournamentParticipations");
 
   if (isNaN(inputValue) || inputValue === "") {
     input.classList.remove("valid");
     input.classList.add("invalid");
-    showErrorMessage("#errorTournament");
+    showErrorMessage("tournament-participations", "tournamentParticipations");
   } else {
     testResult = true;
     input.classList.remove("invalid");
     input.classList.add("valid");
-    removeErrorMessage("#errorTournament");
+    removeErrorMessage("tournament-participations");
   }
   return testResult;
 }
@@ -245,8 +235,7 @@ function tournamentValidation() {
 // check if the user selected at least one city
 function locationValidation() {
   let testResult = false;
-  let input = document.querySelector(".locations");
-  injectErrorMessage("errorLocation", "location");
+  let input = document.querySelector(".field-locations");
 
   if (
     !formInputs.location.element()[0].checked &&
@@ -258,12 +247,12 @@ function locationValidation() {
   ) {
     input.classList.remove("valid-locations");
     input.classList.add("invalid");
-    showErrorMessage("#errorLocation");
+    showErrorMessage("location1", "location");
   } else {
     testResult = true;
     input.classList.remove("invalid");
     input.classList.add("valid-locations");
-    removeErrorMessage("#errorLocation");
+    removeErrorMessage("location1");
   }
   return testResult;
 }
@@ -272,13 +261,12 @@ function locationValidation() {
 function termsConditionsValidation() {
   let testResult = false;
   const input = formInputs.termsConditions.element;
-  injectErrorMessage("errorTermsConditions", "termsConditions");
 
   if (!input.checked) {
-    showErrorMessage("#errorTermsConditions");
+    showErrorMessage("terms-conditions", "termsConditions");
   } else {
     testResult = true;
-    removeErrorMessage("#errorTermsConditions");
+    removeErrorMessage("terms-conditions");
   }
   return testResult;
 }

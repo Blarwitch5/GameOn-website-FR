@@ -429,37 +429,30 @@ footer .copyrights {
   content: none;
 }
 
-.form-field.locations {
+.form-field {
+  padding-bottom: 15px;
+  position: relative;
+}
+.form-field.field-locations {
   border: 2px solid transparent;
   border-radius: 8px;
 }
-.form-field.locations.invalid {
+.form-field.field-locations.invalid {
   border: 2px solid #ff4e60;
   box-shadow: inset 0px 0px 2px 2px transparent;
 }
-.form-field.locations .data-error {
+.form-field.field-locations .data-error {
   padding-left: 10px;
   color: #ff4e60;
 }
+.form-field.field-terms[data-error]::after {
+  bottom: 10px;
+}
 .form-field[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
-  color: #ff4e60;
+  position: absolute;
+  right: 5px;
   display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.form-field[data-error-visible=true]::after {
-  opacity: 1;
-}
-.form-field[data-error-visible=true] .text-control {
-  border: 1px solid #ff4e60;
-}
-.form .data-error {
   color: #ff4e60;
   font-size: 10px;
   min-height: 15px;
@@ -467,10 +460,14 @@ footer .copyrights {
   line-height: 15px;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   visibility: hidden;
+  transition: 0.3s;
+  min-height: 15px;
 }
-.form .data-error#errorTermsConditions {
-  padding-left: 38px;
-  margin: -10px 0 -5px;
+.form-field[data-error-visible=true]::after {
+  visibility: visible;
+}
+.form-field[data-error-visible=true] .text-control {
+  border: 1px solid #ff4e60;
 }
 
 label {

@@ -140,7 +140,10 @@
 
 .form {
   &-field {
-    &.locations {
+    padding-bottom: 15px;
+    position: relative;
+
+    &.field-locations {
       border: 2px solid transparent;
       border-radius: 8px;
 
@@ -154,6 +157,13 @@
         color: $errorColor;
       }
     }
+    &.field-terms {
+      &[data-error] {
+        &::after {
+          bottom: 10px;
+        }
+      }
+    }
     // &::after {
     //   content: "";
     //   background: url(../../public/img/check.svg) no-repeat center center;
@@ -164,39 +174,30 @@
     //   top: 50%;
     //   display: block;
     // }
-    &[data-error]::after {
-      content: attr(data-error);
-      font-size: 0.4em;
-      color: $errorColor;
-      display: block;
-      margin-top: 7px;
-      margin-bottom: 7px;
-      text-align: right;
-      line-height: 0.3;
-      opacity: 0;
-      transition: 0.3s;
+    &[data-error] {
+      &::after {
+        content: attr(data-error);
+        position: absolute;
+        right: 5px;
+        display: block;
+        color: $errorColor;
+        font-size: 10px;
+        min-height: 15px;
+        font-weight: normal;
+        line-height: 15px;
+        font-family: "Roboto", Arial, Helvetica, sans-serif;
+        visibility: hidden;
+        transition: 0.3s;
+        min-height: 15px;
+      }
     }
     &[data-error-visible="true"] {
       &::after {
-        opacity: 1;
+        visibility: visible;
       }
       & .text-control {
         border: 1px solid $errorColor;
       }
-    }
-  }
-  .data-error {
-    color: $errorColor;
-    font-size: 10px;
-    min-height: 15px;
-    font-weight: normal;
-    line-height: 15px;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
-    visibility: hidden;
-
-    &#errorTermsConditions {
-      padding-left: 38px;
-      margin: -10px 0 -5px;
     }
   }
 }
