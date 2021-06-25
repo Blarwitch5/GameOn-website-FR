@@ -82,10 +82,55 @@
     }
   }
 }
+.modalEnd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  display: none;
+  // justify-content: center;
+  // align-items: center;
+  z-index: 2;
+
+  &-content {
+    @include flexCenterCenter;
+    height: 100%;
+  }
+  &-body {
+    @include flexCenterCenter;
+    flex-direction: column;
+    height: 100%;
+  }
+  .message-txt {
+    @include flexCenterCenter;
+    text-align: center;
+    font-size: 36px;
+    line-height: 50px;
+    font-weight: 400;
+  }
+
+  .modalEnd-close-btn.btn.btn-submit {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: unset;
+    top: unset;
+    right: unset;
+    width: unset;
+    height: unset;
+
+    &::after,
+    &::before {
+      content: none;
+    }
+  }
+}
 
 .form {
   &-field {
-
     // &::after {
     //   content: "";
     //   background: url(../../public/img/check.svg) no-repeat center center;

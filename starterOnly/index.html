@@ -69,7 +69,7 @@
                 <input class="text-control" type="text" id="last-name" name="last-name" minlength="2" required />
                 <div class="data-error" id="errorLastname">Le champ nom doit contenir minimum 2 caractères.</div>
               </div>
-              <div class="form-field" >
+              <div class="form-field">
                 <label for="email">E-mail</label>
                 <input class="text-control" type="email" id="email" name="email" required />
                 <div class="data-error" id="errorEmail">Le format de l'email n'est pas valide.</div>
@@ -137,12 +137,15 @@
         </div>
       </div>
       <!-- Modal | Form submitted message -->
-      <div class="modal modalEnd" id="modalEnd">
+      <div class="modalEnd" id="modalEnd">
         <div class="modal-content modalEnd-content">
           <span class="modal-close-btn modalEnd-close-btn"></span>
-          <div class="modal-body modalEnd-close-btn">
-            <div class="message-txt"> Merci ! <br> Votre réservation a été reçue. </div>
-            <div class="btn btn-submit btn-close-modalEnd " id="btn-close-modalEnd"> Fermer </div>
+          <div class="modal-body modalEnd-body">
+            <div class="message-txt">
+              Merci ! <br />
+              Vos informations d'inscription ont été reçues.
+            </div>
+            <div class="btn btn-submit modal-close-btn modalEnd-close-btn" id="modalEnd-close-btn" >Fermer</div>
           </div>
         </div>
       </div>

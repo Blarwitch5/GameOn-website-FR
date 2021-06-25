@@ -370,6 +370,53 @@ footer .copyrights {
   transform: rotate(-45deg);
 }
 
+.modalEnd {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  display: none;
+  z-index: 2;
+}
+.modalEnd-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.modalEnd-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+.modalEnd .message-txt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 36px;
+  line-height: 50px;
+  font-weight: 400;
+}
+.modalEnd .modalEnd-close-btn.btn.btn-submit {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: unset;
+  top: unset;
+  right: unset;
+  width: unset;
+  height: unset;
+}
+.modalEnd .modalEnd-close-btn.btn.btn-submit::after, .modalEnd .modalEnd-close-btn.btn.btn-submit::before {
+  content: none;
+}
+
 .form-field[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
