@@ -305,18 +305,24 @@ function termsConditionsValidation() {
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  const scrollY = document.body.style.top;
+  document.body.style.overflow = "";
 }
 // launch 2nd modal when form is valid and submitted
 function launchModalFormSubmitted() {
   modalbgEnd.style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 // close 2nd modal when form is valid and submitted
 function closeModalFormSubmitted() {
   modalbgEnd.style.display = "none";
+  const scrollY = document.body.style.top;
+  document.body.style.overflow = "";
 }
 // launch modal event
 for (let index = 0; index < modalBtns.length; index++) {
