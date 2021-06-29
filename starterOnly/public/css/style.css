@@ -1,15 +1,5 @@
 /**
  *
- * VARIABLES
- *
- * ========================================================================= */
-/**
- *
- * MIXINS
- *
- * ========================================================================= */
-/**
- *
  * KEYFRAMES
  *
  * ========================================================================= */
@@ -95,16 +85,6 @@ article > * + * {
     scroll-behavior: auto !important;
   }
 }
-/**
- *
- * TYPOGRAPHY
- *
- * ========================================================================= */
-/**
- *
- * BUTTON STYLE
- *
- * ========================================================================= */
 /**
  *
  * HEADER STYLE
@@ -387,6 +367,7 @@ footer .copyrights {
   justify-content: center;
   align-items: center;
   height: 80%;
+  border-radius: 10px;
 }
 .modalEnd-body {
   display: flex;
@@ -446,7 +427,7 @@ footer .copyrights {
   color: #ff4e60;
 }
 .form-field.field-terms[data-error]::after {
-  bottom: 10px;
+  bottom: 50px;
 }
 .form-field[data-error]::after {
   content: attr(data-error);

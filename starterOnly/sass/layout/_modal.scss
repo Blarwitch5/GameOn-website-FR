@@ -97,6 +97,7 @@
   &-content {
     @include flexCenterCenter;
     height: 80%;
+    border-radius: 10px;
   }
   &-body {
     @include flexCenterCenter;
@@ -160,20 +161,11 @@
     &.field-terms {
       &[data-error] {
         &::after {
-          bottom: 10px;
+          bottom: 50px;
         }
       }
     }
-    // &::after {
-    //   content: "";
-    //   background: url(../../public/img/check.svg) no-repeat center center;
-    //   width: 25px;
-    //   height: 25px;
-    //   position: absolute;
-    //   right: 0;
-    //   top: 50%;
-    //   display: block;
-    // }
+
     &[data-error] {
       &::after {
         content: attr(data-error);
