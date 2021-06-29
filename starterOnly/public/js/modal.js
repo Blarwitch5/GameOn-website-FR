@@ -60,8 +60,8 @@ let errorMessages = {
   firstName: `Le champ prénom doit contenir minimum 2 caractères.`,
   lastName: `Le champ nom doit contenir minimum 2 caractères.`,
   email: `Le format de l'email n'est pas valide.`,
-  birthdate: `Vous devez entrer votre date de naissance.`,
-  tournamentParticipations: `Vous devez entrer un nombre.`,
+  birthdate: `Vous devez avoir au moins 12 ans.`,
+  tournamentParticipations: `Vous devez entrer un nombre positif ou égal à zéro.`,
   location: `Vous devez choisir une option.`,
   termsConditions: `Pour vous inscrire, vous devez accepter les termes et conditions.`,
 };
@@ -106,6 +106,25 @@ for (let index = 0; index < formDataFields.length; index++) {
     true
   );
 }
+
+/*------------------------------------------------------------------------*/
+/*----------  returns the selected city in radio buttons list  ------------*/
+/*------------------------------------------------------------------------*/
+function getSelectedRadioboxValue(name) {
+  const radiobox = document.querySelector(`input[name="${name}"]:checked`);
+  return radiobox.value;
+}
+/*------------------------------------------------------------------------*/
+/*---    returns true or false is the checkbox is checked or empty     ---*/
+/*------------------------------------------------------------------------*/
+function getSelectedCheckboxValue() {
+  if (formInputs.notificationsAllowed.element.checked) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 /*------------------------------------------------------------------------*/
 /*----------     function get error message from object       ------------*/
 /*----------        and show / hide with data attribute       ------------*/
@@ -155,11 +174,21 @@ function emailCheck(email) {
 }
 
 //compare 2 dates
+function getAge(date) {
+  const today = new Date();
+  const oneDate = new Date(date);
+  let age = today.getFullYear() - oneDate.getFullYear();
+  let month = today.getMonth() - oneDate.getMonth();
+  if (month < 0 || (month === 0 && today.getDate() < oneDate.getDate())) {
+    age--;
+  }
+  return age;
+}
 function dateCheck(date) {
   const today = new Date();
   const oneDate = new Date(date);
 
-  if (today >= oneDate) {
+  if (today >= oneDate && getAge(date) >= 12) {
     return true;
   } else {
     return false;
@@ -219,7 +248,7 @@ function tournamentValidation() {
   const input = formInputs.tournamentParticipations.element;
   let inputValue = input.value;
 
-  if (isNaN(inputValue) || inputValue === "") {
+  if (isNaN(inputValue) || inputValue === "" || inputValue < 0) {
     input.classList.remove("valid");
     input.classList.add("invalid");
     showErrorMessage("tournament-participations", "tournamentParticipations");
@@ -335,11 +364,38 @@ function formValidation(event) {
     event.preventDefault();
     closeModal();
     launchModalFormSubmitted();
+
+    //show all inputs value in console
+    console.log(
+      "Prénom : " +
+        formInputs.firstName.element.value +
+        "\n" +
+        "Nom : " +
+        formInputs.lastName.element.value +
+        "\n" +
+        "Email : " +
+        formInputs.email.element.value +
+        "\n" +
+        "Date de naissance : " +
+        formInputs.birthdate.element.value +
+        "\n" +
+        "Nombre de participation au tournoi GAmeOn : " +
+        formInputs.tournamentParticipations.element.value +
+        "\n" +
+        "Ville : " +
+        getSelectedRadioboxValue("location") +
+        "\n" +
+        "Conditions d'utilisation : " +
+        termsConditionsValidation() +
+        "\n" +
+        "Notifications : " +
+        getSelectedCheckboxValue()
+    );
   } else {
     validForm = false;
     event.preventDefault();
   }
-  // return validForm;
+  return validForm;
 }
 
 /*------------------------------------------------------------------------*/
