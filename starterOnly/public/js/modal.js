@@ -173,7 +173,7 @@ function emailCheck(email) {
   return regex.test(email);
 }
 
-//compare 2 dates
+//get age form user birthdate in order to compare 2 dates
 function getAge(date) {
   const today = new Date();
   const oneDate = new Date(date);
@@ -184,6 +184,7 @@ function getAge(date) {
   }
   return age;
 }
+//compare 2 dates
 function dateCheck(date) {
   const today = new Date();
   const oneDate = new Date(date);
