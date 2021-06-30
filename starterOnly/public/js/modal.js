@@ -8,10 +8,6 @@
 /*----------                       globals                    ------------*/
 /*------------------------------------------------------------------------*/
 
-//definition of the validation colors for inputs
-const errorColor = "#FF4E60";
-const validColor = "#279e7a";
-
 // DOM Elements
 const modalbg = document.querySelector(".modal");
 const modalBtns = document.querySelectorAll(".js-modal-btn");
@@ -311,7 +307,6 @@ function launchModal() {
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
-  const scrollY = document.body.style.top;
   document.body.style.overflow = "";
 }
 // launch 2nd modal when form is valid and submitted
@@ -322,7 +317,6 @@ function launchModalFormSubmitted() {
 // close 2nd modal when form is valid and submitted
 function closeModalFormSubmitted() {
   modalbgEnd.style.display = "none";
-  const scrollY = document.body.style.top;
   document.body.style.overflow = "";
 }
 // launch modal event
