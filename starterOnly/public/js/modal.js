@@ -53,8 +53,8 @@ let formInputs = {
 };
 //object containing the list of error messages for each field
 let errorMessages = {
-  firstName: `Le champ prénom doit contenir minimum 2 caractères.`,
-  lastName: `Le champ nom doit contenir minimum 2 caractères.`,
+  firstName: `Le champ prénom ne doit pas contenir d'espaces ni de caractères spéciaux.`,
+  lastName: `Le champ nom ne doit pas contenir d'espaces ni de caractères spéciaux.`,
   email: `Le format de l'email n'est pas valide.`,
   birthdate: `Vous devez avoir au moins 12 ans.`,
   tournamentParticipations: `Vous devez entrer un nombre positif ou égal à zéro.`,
@@ -142,15 +142,29 @@ function removeErrorMessage(inputId) {
 /*------------------------------------------------------------------------*/
 /*----------            input validation functions            ------------*/
 /*------------------------------------------------------------------------*/
-
+//test text
+function textFirstName(txt) {
+  let regex = /^[A-Za-z\-]{3,50}$/;
+  return regex.test(txt);
+}
+function textLastName(txt) {
+  let regex = /^(([a-zA-Z\-]+\s)*[a-zA-Z\-]){3,50}$/;
+  return regex.test(txt);
+}
 //validate text form inputs
 function textInputCheck(inputId, objectKey) {
   let testResult = false;
   const input = document.getElementById(inputId);
   let value = input.value;
 
+  let textCheckFunction = "";
+  if (inputId === "first-name"){
+    textCheckFunction = textFirstName(value);
+  }else if (inputId === "last-name"){
+    textCheckFunction = textLastName(value);
+  }
   // check is text input is valid
-  if (value == null || value == "" || value.length <= 2) {
+  if (value == null || value == "" || !textCheckFunction ) {
     input.classList.remove("valid");
     input.classList.add("invalid");
     showErrorMessage(inputId, objectKey);
