@@ -51,10 +51,11 @@ let formInputs = {
     element: document.getElementById("notifications"),
   },
 };
+
 //object containing the list of error messages for each field
 let errorMessages = {
   firstName: `Le champ prénom ne doit pas contenir d'espaces ni de caractères spéciaux.`,
-  lastName: `Le champ nom ne doit pas contenir d'espaces ni de caractères spéciaux.`,
+  lastName: `Le champ nom ne doit pas contenir de caractères spéciaux.`,
   email: `Le format de l'email n'est pas valide.`,
   birthdate: `Vous devez avoir au moins 12 ans.`,
   tournamentParticipations: `Vous devez entrer un nombre positif ou égal à zéro.`,
@@ -144,11 +145,11 @@ function removeErrorMessage(inputId) {
 /*------------------------------------------------------------------------*/
 //test text
 function textFirstName(txt) {
-  let regex = /^[A-Za-z\-]{3,50}$/;
+  let regex = /^[A-Za-zÀ-ÖØ-öø-ÿ-]{3,50}$/;
   return regex.test(txt);
 }
 function textLastName(txt) {
-  let regex = /^(([a-zA-Z\-]+\s)*[a-zA-Z\-]){3,50}$/;
+  let regex = /^(([A-Za-zÀ-ÖØ-öø-ÿ]\s)*[A-Za-zÀ-ÖØ-öø-ÿ'-]){3,50}$/;
   return regex.test(txt);
 }
 //validate text form inputs
@@ -158,13 +159,13 @@ function textInputCheck(inputId, objectKey) {
   let value = input.value;
 
   let textCheckFunction = "";
-  if (inputId === "first-name"){
+  if (inputId === "first-name") {
     textCheckFunction = textFirstName(value);
-  }else if (inputId === "last-name"){
+  } else if (inputId === "last-name") {
     textCheckFunction = textLastName(value);
   }
   // check is text input is valid
-  if (value == null || value == "" || !textCheckFunction ) {
+  if (value == null || value == "" || !textCheckFunction) {
     input.classList.remove("valid");
     input.classList.add("invalid");
     showErrorMessage(inputId, objectKey);
